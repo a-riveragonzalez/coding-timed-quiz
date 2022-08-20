@@ -51,6 +51,7 @@ button{
     color: var(--light-grey);
     width: 150px;
     height: 25px;
+    z-index: 1;
 }
 
 button:hover{
@@ -60,3 +61,9 @@ button:hover{
 button:active{
     border: 5px solid var(--navy-blue);
 }
+
+/* class selectors */
+/* .answer-options{
+    visibility: hidden;
+    z-index: -1;
+} */

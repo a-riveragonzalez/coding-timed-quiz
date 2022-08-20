@@ -1,11 +1,20 @@
 // define variables
 var timerElement = document.querySelector("#time-left");
 var startButton = document.querySelector("#start-game-button");
+var questionsElement = document.querySelector(".questions");
+var answerButton = document.querySelector(".answer-options");
 
 var timer;
 var timerCount;
 
-//function for timer (interval)
+var questionList = {
+    "I'm a question yo!" : ["a", "b", "c", 2],
+    "I'm 2nd question bud!" : ["a", "b", "c", 0],  
+}
+
+console.log(questionList);
+
+//function for timer
 function startTimer(){
     timerCount = 10;
     timer = setInterval(function(){
@@ -17,6 +26,9 @@ function startTimer(){
 
     }, 1000);
 }
+
+// todo make a function for putting the question in the screen
+// ? do I need to add a variable for all the questions?
 
 // function for startQuiz
 function startQuiz(){
