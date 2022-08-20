@@ -52,3 +52,11 @@ button{
     width: 150px;
     height: 25px;
 }
+
+button:hover{
+    border: solid 4px var(--navy-blue);
+}
+
+button:active{
+    border: 5px solid var(--navy-blue);
+}
