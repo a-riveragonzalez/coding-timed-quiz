@@ -1,14 +1,14 @@
 // define variables
 var timerElement = document.querySelector("#time-left");
 var startButton = document.querySelector("#start-game-button");
-var questionsElement = document.querySelector(".questions");
-var answerButton = document.querySelector(".answer-options");
+var startMenu = document.querySelector(".start-container");
+
 
 var timer;
 var timerCount;
 
 // todo loop . display questtext. add buttons, conditional if button click is the right one, else take points off clock
-
+// holds the questions and answers 
 var questionList = [
     {
         questionText: "The condition in an if/else statement is enclosed with ______.", 
@@ -28,10 +28,12 @@ var questionList = [
         questionAnswer: "3. alerts"
 
     }
+]
 
-    ]
-
-console.log(questionList);
+// function so that starting menu disappears upon start click
+function startMenuDisappear(){
+    startMenu.setAttribute("style", "display: none");
+}
 
 //function for timer
 function startTimer(){
@@ -46,12 +48,17 @@ function startTimer(){
     }, 1000);
 }
 
-// todo make a function for putting the question in the screen
-// ? do I need to add a variable for all the questions?
+// function to make questions appear on screen
+function displayQuiz(){
+    
+}
+
 
 // function for startQuiz
 function startQuiz(){
     startTimer();
+    startMenuDisappear();
+    displayQuiz();
 }
 
 
