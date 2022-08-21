@@ -45,13 +45,17 @@ p{
 }
 
 button{
-    margin: 20px;
+    margin: 0 auto 10px auto;
     background-color: var(--coral);
     border: 2px solid var(--grey-blue);
     color: var(--light-grey);
     width: 150px;
     height: 25px;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 button:hover{
