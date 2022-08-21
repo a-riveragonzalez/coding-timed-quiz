@@ -62,8 +62,8 @@ button:active{
     border: 5px solid var(--navy-blue);
 }
 
-/* class selectors */
-/* .answer-options{
-    visibility: hidden;
+class selectors */
+.answer-options{
+    display: none;
     z-index: -1;
-} */
+}

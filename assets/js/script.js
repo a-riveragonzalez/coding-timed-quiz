@@ -7,10 +7,29 @@ var answerButton = document.querySelector(".answer-options");
 var timer;
 var timerCount;
 
-var questionList = {
-    "I'm a question yo!" : ["a", "b", "c", 2],
-    "I'm 2nd question bud!" : ["a", "b", "c", 0],  
-}
+// todo loop . display questtext. add buttons, conditional if button click is the right one, else take points off clock
+
+var questionList = [
+    {
+        questionText: "The condition in an if/else statement is enclosed with ______.", 
+        questionOptions: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"],
+        questionAnswer: "3. parenthesis"
+
+    },
+    {
+        questionText: "Commonly used data types DO NOT include:", 
+        questionOptions: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+        questionAnswer: "3. alerts"
+
+    },
+    {
+        questionText: "String values must be enclosed within ________ when being assigned to variables.", 
+        questionOptions: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"],
+        questionAnswer: "3. alerts"
+
+    }
+
+    ]
 
 console.log(questionList);
 
