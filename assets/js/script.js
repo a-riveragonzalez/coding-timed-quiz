@@ -50,7 +50,18 @@ function startTimer(){
 
 // function to make questions appear on screen
 function displayQuiz(){
-    
+    var quizQuestion = document.createElement("h2");
+    var quizOptions = document.createElement("button");
+    var quizAnswer;
+
+    quizQuestion.textContent = "I'm a question";
+    quizOptions.textContent = "I'm a possible answer";
+
+
+    document.body.appendChild(quizQuestion);
+    document.body.appendChild(quizOptions);
+
+
 }
 
 
