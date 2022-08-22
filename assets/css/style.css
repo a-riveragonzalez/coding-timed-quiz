@@ -66,8 +66,7 @@ button:active{
     border: 5px solid var(--navy-blue);
 }
 
-class selectors */
-.answer-options{
+/* class selectors */
+.quiz-game{
     display: none;
-    z-index: -1;
 }

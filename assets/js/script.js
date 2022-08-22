@@ -2,33 +2,38 @@
 var timerElement = document.querySelector("#time-left");
 var startButton = document.querySelector("#start-game-button");
 var startMenu = document.querySelector(".start-container");
+var questionPrompt = document.querySelector(".q-prompt");
+var optionA = document.querySelector("#A");
+var optionB = document.querySelector("#B");
+var optionC = document.querySelector("#C");
+var optionD = document.querySelector("#D");
 
 var timer;
 var timerCount;
 
-// todo loop . display questtext. add buttons, conditional if button click is the right one, else take points off clock
+// todo loop . conditional if button click is the right one, else take points off clock
 // holds the questions and answers
 var questionList = [
   {
     questionText:
       "The condition in an if/else statement is enclosed with ______.",
     questionOptions: 
-      ["1. quotes","2. curly brackets","3. parenthesis","4. square brackets"],
-    questionAnswer: "3. parenthesis",
+      ["A. quotes","B. curly brackets","C. parenthesis","D. square brackets"],
+    questionAnswer: "C",
   },
   {
     questionText: 
       "Commonly used data types DO NOT include:",
     questionOptions: 
-      ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-    questionAnswer: "3. alerts",
+      ["A. strings", "B. booleans", "C. alerts", "D. numbers"],
+    questionAnswer: "C",
   },
   {
     questionText:
       "String values must be enclosed within ________ when being assigned to variables.",
     questionOptions: 
-      ["1. commas","2. curly brackets","3. quotes","4. parenthesis"],
-    questionAnswer: "4. parenthesis",
+      ["A. commas","B. curly brackets","C. quotes","D. parenthesis"],
+    questionAnswer: "C",
   },
 ];
 
@@ -51,28 +56,55 @@ function startTimer() {
 
 // function to make questions appear on screen
 function displayQuiz() {
-  var quizQuestion = document.createElement("h2");
-  var quizOption0 = document.createElement("button");
-  var quizOption1 = document.createElement("button");
-  var quizOption2 = document.createElement("button");
-  var quizOption3 = document.createElement("button");
+  var quizQuestion = questionPrompt;
+  var quizOption0 = optionA;
+  var quizOption1 = optionB;
+  var quizOption2 = optionC;
+  var quizOption3 = optionD;
   var quizAnswer;
+  // var userAnswer;
 
   for (i = 0; i < questionList.length; i++) {
     quizAnswer = questionList[i].questionAnswer
-    // todo somehow make the array in the answer options into four buttons
+
     quizQuestion.textContent = questionList[i].questionText;
     quizOption0.textContent = questionList[i].questionOptions[0];
     quizOption1.textContent = questionList[i].questionOptions[1];
     quizOption2.textContent = questionList[i].questionOptions[2];
     quizOption3.textContent = questionList[i].questionOptions[3];
-    
 
-    console.log(quizQuestion);
-    console.log(quizAnswer);
+    quizOption0.addEventListener("click", compareAnswer);
+    quizOption1.addEventListener("click", compareAnswer);
+    quizOption2.addEventListener("click", compareAnswer);
+    quizOption3.addEventListener("click", compareAnswer);
+
+    console.log(quizOption0);
+    // todo make event listener to buttons (how can i make them listen to all of them?)
+    function compareAnswer(){
+
+      if(quizOption0 === quizAnswer){
+        console.log("that's correct!");
+      }
+
+      if(quizOption1 === quizAnswer){
+        console.log("that's correct!");
+      }
+
+      if(quizOption2 === quizAnswer){
+        console.log("that's correct!");
+      }
+
+      if(quizOption3 === quizAnswer){
+        console.log("that's correct!");
+      }
+      
+    }
+
+    // todo if button pressed is = to quiz answer, then correct(next question)
+    // todo else it is wrong (next question)
   }
 
-  
+  // ?lets check if this works gah 
 
   document.body.appendChild(quizQuestion);
   document.body.appendChild(quizOption0);
@@ -80,6 +112,8 @@ function displayQuiz() {
   document.body.appendChild(quizOption2);
   document.body.appendChild(quizOption3);
 }
+
+// todo function after quiz: display win or lost screen. send to high scores
 
 // function for startQuiz
 function startQuiz() {
