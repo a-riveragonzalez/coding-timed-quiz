@@ -54,6 +54,13 @@ function startTimer() {
   }, 1000);
 }
 
+function compareAnswer() {
+  console.log("i'm comparing answers")
+  console.log(optionA);
+
+
+}
+
 // function to make questions appear on screen
 function displayQuiz() {
   var quizQuestion = questionPrompt;
@@ -62,8 +69,8 @@ function displayQuiz() {
   var quizOption2 = optionC;
   var quizOption3 = optionD;
   var quizAnswer;
-  // var userAnswer;
-
+  
+  
   for (i = 0; i < questionList.length; i++) {
     quizAnswer = questionList[i].questionAnswer
 
@@ -78,28 +85,8 @@ function displayQuiz() {
     quizOption2.addEventListener("click", compareAnswer);
     quizOption3.addEventListener("click", compareAnswer);
 
-    console.log(quizOption0);
     // todo make event listener to buttons (how can i make them listen to all of them?)
-    function compareAnswer(){
-
-      if(quizOption0 === quizAnswer){
-        console.log("that's correct!");
-      }
-
-      if(quizOption1 === quizAnswer){
-        console.log("that's correct!");
-      }
-
-      if(quizOption2 === quizAnswer){
-        console.log("that's correct!");
-      }
-
-      if(quizOption3 === quizAnswer){
-        console.log("that's correct!");
-      }
-      
-    }
-
+    compareAnswer();
     // todo if button pressed is = to quiz answer, then correct(next question)
     // todo else it is wrong (next question)
   }
