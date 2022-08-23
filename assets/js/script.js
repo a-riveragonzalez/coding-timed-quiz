@@ -1,6 +1,7 @@
 // define variables
 var timerElement = document.querySelector("#time-left");
 var startButton = document.querySelector("#start-game-button");
+var viewHighScores = document.querySelector("#view-high-scores");
 var backButton = document.querySelector("#go-back-button");
 var startMenu = document.querySelector(".start-container");
 var quizMenu = document.querySelector(".quiz-game");
@@ -86,9 +87,18 @@ function startMenuDisappear() {
   startMenu.setAttribute("style", "display: none");
 }
 
+// function to see high score menu
+function viewScores() {
+  startMenu.setAttribute("style", "display: none");
+  quizMenu.setAttribute("style", "display:none");
+  highScoreMenu.setAttribute("style", "display:block");
+}
+
 //function to exit the high score menu
 function goBack() {
-
+  startMenu.setAttribute("style", "display: block");
+  quizMenu.setAttribute("style", "display:none");
+  highScoreMenu.setAttribute("style", "display:none");
 }
 
 //function for timer
@@ -107,7 +117,6 @@ function startTimer() {
 
 function checkAnswer(event) {
   quizAnswer = questionList[currentQuestion].questionAnswer;
-
   if (event.target.matches("button") ){
 
     if (event.target.textContent === quizAnswer){
@@ -116,10 +125,7 @@ function checkAnswer(event) {
       timerCount = timerCount - 10;
       displayNextQuestion();
     }
-
   }
-
-
 }
 
 
@@ -135,4 +141,5 @@ function startQuiz() {
 
 //set listener to start quiz button
 startButton.addEventListener("click", startQuiz);
+viewHighScores.addEventListener("click", viewScores);
 backButton.addEventListener("click", goBack);
