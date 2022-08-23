@@ -1,8 +1,10 @@
 // define variables
 var timerElement = document.querySelector("#time-left");
 var startButton = document.querySelector("#start-game-button");
+var backButton = document.querySelector("#go-back-button");
 var startMenu = document.querySelector(".start-container");
 var quizMenu = document.querySelector(".quiz-game");
+var highScoreMenu = document.querySelector(".high-score-chart");
 var questionPrompt = document.querySelector(".q-prompt");
 var optionA = document.querySelector("#A");
 var optionB = document.querySelector("#B");
@@ -33,6 +35,14 @@ var questionList = [
     questionAnswer: "alerts",
   },
   {
+    questionText: "Arrays in JavaScript can be used to store:",
+    questionOptionA: "strings and numbers",
+    questionOptionB: "other arrays",
+    questionOptionC:"booleans",
+    questionOptionD: "All the above",
+    questionAnswer: "All the above",
+  },
+  {
     questionText:"String values must be enclosed within ________ when being assigned to variables.",
     questionOptionA: "commas",
     questionOptionB: "curly brackets",
@@ -40,6 +50,14 @@ var questionList = [
     questionOptionD: "parenthesis", 
     questionAnswer: "quotes",
   },
+  {
+    questionText:"A very useful tool used during development and debugging for printing content to the debugger is:",
+    questionOptionA: "JavaScript",
+    questionOptionB: "terminal/bash",
+    questionOptionC:"for-loops",
+    questionOptionD: "console.log", 
+    questionAnswer: "console.log",
+  }
 ];
 
 var currentQuestion = 0; //starting point for our displayQuestions
@@ -66,6 +84,11 @@ function displayNextQuestion() {
 // function so that starting menu disappears upon start click
 function startMenuDisappear() {
   startMenu.setAttribute("style", "display: none");
+}
+
+//function to exit the high score menu
+function goBack() {
+
 }
 
 //function for timer
@@ -112,3 +135,4 @@ function startQuiz() {
 
 //set listener to start quiz button
 startButton.addEventListener("click", startQuiz);
+backButton.addEventListener("click", goBack);
