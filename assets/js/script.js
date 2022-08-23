@@ -4,6 +4,7 @@ var timerElement = document.querySelector("#time-left");
 var startButton = document.querySelector("#start-game-button");
 var viewHighScores = document.querySelector("#view-high-scores");
 var backButton = document.querySelector("#go-back-button");
+var submitButton = document.querySelector("#submit-button");
 //menus
 var startMenu = document.querySelector(".start-container");
 var quizMenu = document.querySelector(".quiz-game");
@@ -15,6 +16,8 @@ var optionA = document.querySelector("#A");
 var optionB = document.querySelector("#B");
 var optionC = document.querySelector("#C");
 var optionD = document.querySelector("#D");
+
+var userScore = document.querySelector("#your-score");
 
 var timer;
 var timerCount;
@@ -85,7 +88,6 @@ function displayNextQuestion() {
   } 
   else{
     finishGame();
-
   }
 }
 
@@ -113,17 +115,17 @@ function goBack() {
 }
 
 function finishGame() {
-  // todo hide all screens
-  //todo show high score form
   quizMenu.setAttribute("style", "display:none");
-  scoreMenu.setAttribute("style", "display:block");
+  scoreMenu.setAttribute("style", "display:block");  
   clearInterval(timer);
+  // shows high score 
+  userScore.textContent = timerCount;
 
 }
 
 //function for timer
 function startTimer() {
-  timerCount = 60;
+  timerCount = 75;
   timer = setInterval(function () {
     timerCount--;
     timerElement.textContent = timerCount;
@@ -148,8 +150,13 @@ function checkAnswer(event) {
   }
 }
 
-
 // todo send to high scores
+function submitInitials(){
+  // todo add initials and userscore to local storage
+  // todo create new li in ol of high score chart
+  // todo add text content then append 
+  viewScores();
+}
 
 // function for startQuiz
 function startQuiz() {
@@ -163,3 +170,4 @@ function startQuiz() {
 startButton.addEventListener("click", startQuiz);
 viewHighScores.addEventListener("click", viewScores);
 backButton.addEventListener("click", goBack);
+submitButton.addEventListener("submit", submitInitials);

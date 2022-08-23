@@ -87,7 +87,7 @@ form button {
 /* class selectors */
 
 .start-container {
-    display: none;
+    display: block;
 }
 
 .quiz-game{
@@ -95,7 +95,7 @@ form button {
 }
 
 .high-score-chart{
-    display: block;
+    display: none;
 }
 
 .hsc-buttons{
