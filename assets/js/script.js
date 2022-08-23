@@ -15,27 +15,49 @@ var timerCount;
 // holds the questions and answers
 var questionList = [
   {
-    questionText:
-      "The condition in an if/else statement is enclosed with ______.",
-    questionOptions: 
-      ["A. quotes","B. curly brackets","C. parenthesis","D. square brackets"],
+    questionText:"The condition in an if/else statement is enclosed with ______.",
+    questionOptionA: "quotes",
+    questionOptionB: "curly brackets",
+    questionOptionC:"parenthesis",
+    questionOptionD: "square brackets",
     questionAnswer: "C",
   },
   {
-    questionText: 
-      "Commonly used data types DO NOT include:",
-    questionOptions: 
-      ["A. strings", "B. booleans", "C. alerts", "D. numbers"],
+    questionText: "Commonly used data types DO NOT include:",
+    questionOptionA: "strings",
+    questionOptionB: "booleans",
+    questionOptionC:"alerts",
+    questionOptionD: "numbers",
     questionAnswer: "C",
   },
   {
-    questionText:
-      "String values must be enclosed within ________ when being assigned to variables.",
-    questionOptions: 
-      ["A. commas","B. curly brackets","C. quotes","D. parenthesis"],
+    questionText:"String values must be enclosed within ________ when being assigned to variables.",
+    questionOptionA: "commas",
+    questionOptionB: "curly brackets",
+    questionOptionC:"quotes",
+    questionOptionD: "parenthesis", 
     questionAnswer: "C",
   },
 ];
+
+var currentQuestion = 0; //starting point for our displayQuestions
+var lastQuestion = questionList.length - 1; 
+
+// function to make questions appear on screen
+function displayQuiz() {
+  questionPrompt.textContent=questionList[currentQuestion].questionText;
+  console.log(questionPrompt);
+  optionA.textContent=questionList[currentQuestion].questionOptionA;
+  optionB.textContent=questionList[currentQuestion].questionOptionB;
+  optionC.textContent=questionList[currentQuestion].questionOptionC;
+  optionD.textContent=questionList[currentQuestion].questionOptionD;
+
+  document.body.appendChild(questionPrompt);
+  document.body.appendChild(optionA);
+  document.body.appendChild(optionB);
+  document.body.appendChild(optionC);
+  document.body.appendChild(optionD);
+}
 
 // function so that starting menu disappears upon start click
 function startMenuDisappear() {
@@ -54,51 +76,17 @@ function startTimer() {
   }, 1000);
 }
 
-function compareAnswer() {
-  console.log("i'm comparing answers")
-  console.log(optionA);
 
+function checkAnswer() {
+  var stateA = optionA.getAttribute("data-state");
+  var stateB = optionA.getAttribute("data-state");
+  var stateC = optionA.getAttribute("data-state");
+  var stateD = optionA.getAttribute("data-state");
 
+  console.log(stateA);
+  console.log(quizAnswer);
 }
 
-// function to make questions appear on screen
-function displayQuiz() {
-  var quizQuestion = questionPrompt;
-  var quizOption0 = optionA;
-  var quizOption1 = optionB;
-  var quizOption2 = optionC;
-  var quizOption3 = optionD;
-  var quizAnswer;
-  
-  
-  for (i = 0; i < questionList.length; i++) {
-    quizAnswer = questionList[i].questionAnswer
-
-    quizQuestion.textContent = questionList[i].questionText;
-    quizOption0.textContent = questionList[i].questionOptions[0];
-    quizOption1.textContent = questionList[i].questionOptions[1];
-    quizOption2.textContent = questionList[i].questionOptions[2];
-    quizOption3.textContent = questionList[i].questionOptions[3];
-
-    quizOption0.addEventListener("click", compareAnswer);
-    quizOption1.addEventListener("click", compareAnswer);
-    quizOption2.addEventListener("click", compareAnswer);
-    quizOption3.addEventListener("click", compareAnswer);
-
-    // todo make event listener to buttons (how can i make them listen to all of them?)
-    compareAnswer();
-    // todo if button pressed is = to quiz answer, then correct(next question)
-    // todo else it is wrong (next question)
-  }
-
-  // ?lets check if this works gah 
-
-  document.body.appendChild(quizQuestion);
-  document.body.appendChild(quizOption0);
-  document.body.appendChild(quizOption1);
-  document.body.appendChild(quizOption2);
-  document.body.appendChild(quizOption3);
-}
 
 // todo function after quiz: display win or lost screen. send to high scores
 
