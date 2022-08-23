@@ -5,6 +5,7 @@ var startButton = document.querySelector("#start-game-button");
 var viewHighScores = document.querySelector("#view-high-scores");
 var backButton = document.querySelector("#go-back-button");
 var submitButton = document.querySelector("#submit-button");
+var clearButton = document.querySelector("#clear-button");
 //menus
 var startMenu = document.querySelector(".start-container");
 var quizMenu = document.querySelector(".quiz-game");
@@ -152,9 +153,16 @@ function checkAnswer(event) {
   }
 }
 
+// todo clear local history
+function clearScores(){
+  allScores.innerHTML = "";
+  
+}
+
 //todo render from local storage and populate the hs menu
 function renderScores(){
-  // below is from example
+  viewHighScores.disabled = true;
+
   var score = localStorage.getItem("score");
   var initials = localStorage.getItem("initials");
 
@@ -163,6 +171,9 @@ function renderScores(){
 
   savedScore.textContent = score;
   savedInitials.textContent = initials;
+
+  allScores.appendChild(savedInitials);
+  allScores.appendChild(savedScore);
 }
 
 //sends high scores to local storage
@@ -192,3 +203,4 @@ startButton.addEventListener("click", startQuiz);
 viewHighScores.addEventListener("click", viewScores);
 backButton.addEventListener("click", goBack);
 submitButton.addEventListener("click", submitInitials);
+clearButton.addEventListener("click", clearScores);

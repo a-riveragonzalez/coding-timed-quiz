@@ -39,6 +39,16 @@ a{
     text-decoration: none;
 }
 
+ol {
+    margin-bottom: 20px;
+}
+
+li {
+    display: inline;
+    justify-content: center;
+    padding: 5px;
+}
+
 /* in the main */
 h2 {
     padding: 20px;
