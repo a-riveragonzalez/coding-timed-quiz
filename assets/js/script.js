@@ -2,6 +2,7 @@
 var timerElement = document.querySelector("#time-left");
 var startButton = document.querySelector("#start-game-button");
 var startMenu = document.querySelector(".start-container");
+var quizMenu = document.querySelector(".quiz-game");
 var questionPrompt = document.querySelector(".q-prompt");
 var optionA = document.querySelector("#A");
 var optionB = document.querySelector("#B");
@@ -10,6 +11,7 @@ var optionD = document.querySelector("#D");
 
 var timer;
 var timerCount;
+var quizAnswer;
 
 // todo loop . conditional if button click is the right one, else take points off clock
 // holds the questions and answers
@@ -20,7 +22,7 @@ var questionList = [
     questionOptionB: "curly brackets",
     questionOptionC:"parenthesis",
     questionOptionD: "square brackets",
-    questionAnswer: "C",
+    questionAnswer: "parenthesis",
   },
   {
     questionText: "Commonly used data types DO NOT include:",
@@ -28,7 +30,7 @@ var questionList = [
     questionOptionB: "booleans",
     questionOptionC:"alerts",
     questionOptionD: "numbers",
-    questionAnswer: "C",
+    questionAnswer: "alerts",
   },
   {
     questionText:"String values must be enclosed within ________ when being assigned to variables.",
@@ -36,7 +38,7 @@ var questionList = [
     questionOptionB: "curly brackets",
     questionOptionC:"quotes",
     questionOptionD: "parenthesis", 
-    questionAnswer: "C",
+    questionAnswer: "quotes",
   },
 ];
 
@@ -45,18 +47,20 @@ var lastQuestion = questionList.length - 1;
 
 // function to make questions appear on screen
 function displayQuiz() {
+  quizMenu.setAttribute("style", "display: block");
+
   questionPrompt.textContent=questionList[currentQuestion].questionText;
-  console.log(questionPrompt);
   optionA.textContent=questionList[currentQuestion].questionOptionA;
   optionB.textContent=questionList[currentQuestion].questionOptionB;
   optionC.textContent=questionList[currentQuestion].questionOptionC;
   optionD.textContent=questionList[currentQuestion].questionOptionD;
+}
 
-  document.body.appendChild(questionPrompt);
-  document.body.appendChild(optionA);
-  document.body.appendChild(optionB);
-  document.body.appendChild(optionC);
-  document.body.appendChild(optionD);
+function displayNextQuestion() {
+  if (currentQuestion < lastQuestion){
+    currentQuestion++;
+    displayQuiz();
+  }
 }
 
 // function so that starting menu disappears upon start click
@@ -66,25 +70,33 @@ function startMenuDisappear() {
 
 //function for timer
 function startTimer() {
-  timerCount = 10;
+  timerCount = 60;
   timer = setInterval(function () {
     timerCount--;
     timerElement.textContent = timerCount;
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
+      timerCount=0;
       clearInterval(timer);
     }
   }, 1000);
 }
 
 
-function checkAnswer() {
-  var stateA = optionA.getAttribute("data-state");
-  var stateB = optionA.getAttribute("data-state");
-  var stateC = optionA.getAttribute("data-state");
-  var stateD = optionA.getAttribute("data-state");
+function checkAnswer(event) {
+  quizAnswer = questionList[currentQuestion].questionAnswer;
 
-  console.log(stateA);
-  console.log(quizAnswer);
+  if (event.target.matches("button") ){
+
+    if (event.target.textContent === quizAnswer){
+      displayNextQuestion();
+    } else {
+      timerCount = timerCount - 10;
+      displayNextQuestion();
+    }
+
+  }
+
+
 }
 
 
@@ -95,6 +107,7 @@ function startQuiz() {
   startTimer();
   startMenuDisappear();
   displayQuiz();
+  quizMenu.addEventListener("click", checkAnswer);
 }
 
 //set listener to start quiz button
