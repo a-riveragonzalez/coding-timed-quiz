@@ -71,14 +71,43 @@ button:active{
     border: 5px solid var(--navy-blue);
 }
 
+/* in the form*/
+form {
+    margin: 10px;
+}
+
+form input {
+    width: 100px;
+}
+
+form button {
+    margin-top: 10px;
+}
+
 /* class selectors */
+
+.start-container {
+    display: none;
+}
 
 .quiz-game{
     display: none;
 }
 
 .high-score-chart{
-    display: none;
+    display: block;
+}
+
+.hsc-buttons{
+    display:flex;
+    margin: 0;
+    justify-content: center;
+}
+
+.hsc-buttons button{
+    display: flex;
+    justify-content: center;
+    margin: 0;
 }
 
 .high-score-form {

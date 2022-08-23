@@ -34,15 +34,20 @@
         <h2>High Scores</h2>
         <ol>
         </ol>
-        <button id="go-back-button">Go back</button>
-        <button>Clear high scores</button>
-
+        <div class="hsc-buttons">
+            <button id="go-back-button">Go back</button>
+            <button>Clear high scores</button>
+        </div>
     </div>
 
     <div class="high-score-form">
         <h2>All done!</h2>
         <h4>Your final score is <span id="your-score">0</span></h4>
-        <form action="get-initials"></form>
+        <form action="get-initials">
+            <label for="initials"> Enter Initials:</label>
+            <input id="user-initials" type="text" placeholder="Initials here" />
+            <button id="submit-button">Submit</button>
+        </form>
     </div>
 
     <script src="./assets/js/script.js"></script>

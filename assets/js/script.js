@@ -20,7 +20,6 @@ var timer;
 var timerCount;
 var quizAnswer;
 
-// todo loop . conditional if button click is the right one, else take points off clock
 // holds the questions and answers
 var questionList = [
   {
@@ -84,6 +83,10 @@ function displayNextQuestion() {
     currentQuestion++;
     displayQuiz();
   } 
+  else{
+    finishGame();
+
+  }
 }
 
 // function so that starting menu disappears upon start click
@@ -114,7 +117,7 @@ function finishGame() {
   //todo show high score form
   quizMenu.setAttribute("style", "display:none");
   scoreMenu.setAttribute("style", "display:block");
-
+  clearInterval(timer);
 
 }
 
@@ -139,14 +142,14 @@ function checkAnswer(event) {
     if (event.target.textContent === quizAnswer){
       displayNextQuestion();
     } else {
-      timerCount = timerCount - 10;
+      timerCount = timerCount - 15;
       displayNextQuestion();
     }
   }
 }
 
 
-// todo function after quiz: display win or lost screen. send to high scores
+// todo send to high scores
 
 // function for startQuiz
 function startQuiz() {
