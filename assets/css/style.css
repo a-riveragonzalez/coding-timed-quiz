@@ -72,10 +72,15 @@ button:active{
 }
 
 /* class selectors */
+
 .quiz-game{
     display: none;
 }
 
 .high-score-chart{
+    display: none;
+}
+
+.high-score-form {
     display: none;
 }
