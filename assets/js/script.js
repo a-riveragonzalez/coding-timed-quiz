@@ -115,6 +115,8 @@ function goBack() {
   highScoreMenu.setAttribute("style", "display:none");
   scoreMenu.setAttribute("style", "display:none");
 
+  viewHighScores.disabled = false;
+
 }
 
 function finishGame() {
@@ -156,7 +158,7 @@ function checkAnswer(event) {
 // todo clear local history
 function clearScores(){
   allScores.innerHTML = "";
-  
+
 }
 
 //todo render from local storage and populate the hs menu
