@@ -1,11 +1,15 @@
 // define variables
 var timerElement = document.querySelector("#time-left");
+// buttons
 var startButton = document.querySelector("#start-game-button");
 var viewHighScores = document.querySelector("#view-high-scores");
 var backButton = document.querySelector("#go-back-button");
+//menus
 var startMenu = document.querySelector(".start-container");
 var quizMenu = document.querySelector(".quiz-game");
 var highScoreMenu = document.querySelector(".high-score-chart");
+var scoreMenu = document.querySelector(".high-score-form");
+//quiz elements
 var questionPrompt = document.querySelector(".q-prompt");
 var optionA = document.querySelector("#A");
 var optionB = document.querySelector("#B");
@@ -79,7 +83,7 @@ function displayNextQuestion() {
   if (currentQuestion < lastQuestion){
     currentQuestion++;
     displayQuiz();
-  }
+  } 
 }
 
 // function so that starting menu disappears upon start click
@@ -92,6 +96,8 @@ function viewScores() {
   startMenu.setAttribute("style", "display: none");
   quizMenu.setAttribute("style", "display:none");
   highScoreMenu.setAttribute("style", "display:block");
+  scoreMenu.setAttribute("style", "display:none");
+
 }
 
 //function to exit the high score menu
@@ -99,6 +105,17 @@ function goBack() {
   startMenu.setAttribute("style", "display: block");
   quizMenu.setAttribute("style", "display:none");
   highScoreMenu.setAttribute("style", "display:none");
+  scoreMenu.setAttribute("style", "display:none");
+
+}
+
+function finishGame() {
+  // todo hide all screens
+  //todo show high score form
+  quizMenu.setAttribute("style", "display:none");
+  scoreMenu.setAttribute("style", "display:block");
+
+
 }
 
 //function for timer
@@ -110,10 +127,10 @@ function startTimer() {
     if (timerCount <= 0) {
       timerCount=0;
       clearInterval(timer);
+      finishGame();
     }
   }, 1000);
 }
-
 
 function checkAnswer(event) {
   quizAnswer = questionList[currentQuestion].questionAnswer;
