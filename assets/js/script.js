@@ -17,6 +17,7 @@ var optionB = document.querySelector("#B");
 var optionC = document.querySelector("#C");
 var optionD = document.querySelector("#D");
 
+var allScores = document.querySelector(".all-scores");
 var userScore = document.querySelector("#your-score");
 
 var timer;
@@ -103,6 +104,7 @@ function viewScores() {
   highScoreMenu.setAttribute("style", "display:block");
   scoreMenu.setAttribute("style", "display:none");
 
+  renderScores();
 }
 
 //function to exit the high score menu
@@ -150,11 +152,30 @@ function checkAnswer(event) {
   }
 }
 
-// todo send to high scores
-function submitInitials(){
-  // todo add initials and userscore to local storage
-  // todo create new li in ol of high score chart
-  // todo add text content then append 
+//todo render from local storage and populate the hs menu
+function renderScores(){
+  // below is from example
+  var score = localStorage.getItem("score");
+  var initials = localStorage.getItem("initials");
+
+  var savedScore = document.createElement("li");
+  var savedInitials = document.createElement("li");
+
+  savedScore.textContent = score;
+  savedInitials.textContent = initials;
+}
+
+//sends high scores to local storage
+function submitInitials(event){
+  event.preventDefault();
+
+  var score = timerCount;
+  var initials = document.querySelector("#user-initials").value;
+
+  localStorage.setItem("score", score);
+  localStorage.setItem("initials", initials);
+
+  renderScores();
   viewScores();
 }
 
@@ -170,4 +191,4 @@ function startQuiz() {
 startButton.addEventListener("click", startQuiz);
 viewHighScores.addEventListener("click", viewScores);
 backButton.addEventListener("click", goBack);
-submitButton.addEventListener("submit", submitInitials);
+submitButton.addEventListener("click", submitInitials);
