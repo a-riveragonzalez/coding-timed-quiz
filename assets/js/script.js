@@ -157,7 +157,7 @@ function checkAnswer(event) {
   }
 }
 
-// todo clear local history
+// clears local history and li elements 
 function clearScores(){
   allScores.innerHTML = "";
   localStorage.clear();
