@@ -163,7 +163,7 @@ function clearScores(){
   localStorage.clear();
 }
 
-//todo render from local storage and populate the hs menu
+//Renders from local storage and populate the hs menu
 function renderScores(){
   allScores.textContent = "";
   viewHighScores.disabled = true;
