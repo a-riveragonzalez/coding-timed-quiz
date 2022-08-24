@@ -127,6 +127,7 @@ function finishGame() {
   clearInterval(timer);
   // shows high score 
   userScore.textContent = timerCount;
+  timerElement.textContent = timerCount;
 
 }
 
