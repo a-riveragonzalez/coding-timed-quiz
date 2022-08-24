@@ -100,6 +100,8 @@ function startMenuDisappear() {
 
 // function to see high score menu
 function viewScores() {
+  timerElement.textContent = 0;
+  currentQuestion = 0;
   startMenu.setAttribute("style", "display: none");
   quizMenu.setAttribute("style", "display:none");
   highScoreMenu.setAttribute("style", "display:block");
@@ -158,11 +160,12 @@ function checkAnswer(event) {
 // todo clear local history
 function clearScores(){
   allScores.innerHTML = "";
-
+  localStorage.clear();
 }
 
 //todo render from local storage and populate the hs menu
 function renderScores(){
+  allScores.textContent = "";
   viewHighScores.disabled = true;
 
   var score = localStorage.getItem("score");
